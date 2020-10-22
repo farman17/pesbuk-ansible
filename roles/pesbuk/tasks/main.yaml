@@ -28,7 +28,7 @@
 - name: deploy pesbuk to /var/www/html/
       copy:
         src: /tmp/resosmed/
-        dest: /var/www/html/
+        dest: /var/www/html/resosmed
 
 - name: copy config to /var/www/html/resosmed
   template:
