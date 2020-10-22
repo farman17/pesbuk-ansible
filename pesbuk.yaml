@@ -1,0 +1,7 @@
+- name: Install Pesbuk
+  hosts: pesbuk
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  roles:
+    - pesbuk

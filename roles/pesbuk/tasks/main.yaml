@@ -1,0 +1,39 @@
+- name: install apache2
+  apt:
+    name: apache2
+    state: present
+
+- name: install dependencies
+  apt:
+    pkg:
+    - php
+    - libapache2-mod-php
+    - php-mysql
+    - php-curl
+    - php-gd
+    - php-xml
+    - php-mbstring
+    - php-xmlrpc
+    - php-zip
+    - php-soap
+    - php-intl
+    - tar
+    - mysql-client
+
+- name: start service apache2
+  service:
+    name: apache2
+    state: started
+
+- name: deploy pesbuk to /var/www/html/
+      copy:
+        src: /tmp/resosmed/
+        dest: /var/www/html/
+
+- name: copy config to /var/www/html/resosmed
+  template:
+    src: config.php.j2
+    dest: /var/www/html/resosmed/config.php
+  notify: "restart apache2"   
+
+
